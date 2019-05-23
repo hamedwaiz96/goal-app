@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserController, type: :controller do
+RSpec.describe UsersController, type: :controller do
 
   describe "Signing Up Process" do
 
@@ -23,7 +23,7 @@ RSpec.describe UserController, type: :controller do
 
         it "warns the user that password is invalid" do
           post :create, params: { "user[email]": "kharhime3@yahoo.com", "user[password]": ""}
-          expect(response).to include("Invalid Email or Password")
+          expect(flash[:errors]).to be_present
         end
       end
 

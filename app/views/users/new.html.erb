@@ -1,0 +1,15 @@
+<%= flash[:errors] %>
+
+<h1>New user</h1>
+
+<form action="<%= users_url %>" method="post">
+  <%= auth_token %>
+  <label for="email">Email</label>
+  <input id="email" type="text" name="user[email]">
+  <br>
+  <label for="password">Password</label>
+  <input type="text" name="user[password]" id="password">
+  <br>
+  <input type="submit" value="Sign Up!">
+
+</form>
