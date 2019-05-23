@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+# RSpec.describe User, type: :model do
 
   describe User do
 
-    subject(:user) { FactoryBot.build(:user, :email => "kharhime3@yahoo.com", :password => "goodmorning")}
+    subject(:user) { FactoryBot.build(:user, email: "kharhime3@yahoo.com", password: "goodmorning")}
+
 
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password_digest) }
@@ -51,4 +52,4 @@ RSpec.describe User, type: :model do
     end
 
   end
-end
+# end
