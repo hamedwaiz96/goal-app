@@ -6,4 +6,21 @@
   <input type="submit" value="Logout">
 </form>
 <br>
+<ul>
+  <% @user.user_comments.each do |comment| %>
+    <li><%= comment.body %></li>
+  <% end %>
+</ul>
+<br>
+
+<%= flash[:errors4] %>
+<form action="<%= user_comments_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="user_comment[user_id]" value="<%= @user.id %>">
+  <input type="hidden" name="user_comment[author_id]" value="<%= current_user.id %>">
+  <label for="comment">Comment: </label>
+  <textarea id="comment" name="user_comment[body]" rows="1" cols="20"></textarea>
+  <input type="submit" value="Add New Comment">
+</form>
+<br>
 <a href="<%= goals_url %>">Look at all Public Goals</a>

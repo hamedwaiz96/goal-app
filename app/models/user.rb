@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :user_comments,
     primary_key: :id,
-    foreign_key: :author_id,
+    foreign_key: :user_id,
     class_name: 'UserComment',
     dependent: :destroy
 
