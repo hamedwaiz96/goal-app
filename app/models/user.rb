@@ -10,11 +10,6 @@ class User < ApplicationRecord
 
   has_many :goals
 
-  has_many :user_comments,
-    primary_key: :id,
-    foreign_key: :user_id,
-    class_name: 'UserComment',
-    dependent: :destroy
 
   def generate_session_token
     SecureRandom::urlsafe_base64(16)

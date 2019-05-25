@@ -9,23 +9,6 @@
 <br>
 <a href="<%= goals_url %>">Back to Goals</a>
 <br>
-<%= flash[:errors5] %>
-<ul>
-  <% @goal.goal_comments.each do |goal_comment| %>
-    <li><%= goal_comment.body %></li>
-  <% end %>
-</ul>
-
-<br>
-<form action="<%= goal_comments_url %>" method="post">
-  <%= auth_token %>
-  <input type="hidden" name="goal_comment[goal_id]" value="<%= @goal.id %>">
-  <label for="comment">Comment</label>
-  <textarea id="comment" name="goal_comment[body]" rows="1" cols="20"></textarea>
-  <br>
-  <input type="submit" value="Add New Comment">
-</form>
-<br>
 <% if current_user.id == @goal.user_id %>
 <form action="<%= goal_url(@goal) %>" method="post">
   <%= auth_token %>
