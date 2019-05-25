@@ -1,3 +1,6 @@
+<%= flash[:notices] %>
+<%= flash[:errors6] %>
+
 <h1><%= @goal.content %>'s Show Page</h1>
 
 <ul>
@@ -8,6 +11,25 @@
 </ul>
 <br>
 <a href="<%= goals_url %>">Back to Goals</a>
+<br>
+
+<ul>
+  <% @goal.comments.each do |comment| %>
+    <li><%= comment.body %></li>
+  <% end %>
+</ul>
+
+<br>
+<form action="<%= comments_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[author_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="comment[commentable_id]" value="<%= @goal.id %>">
+  <input type="hidden" name="comment[commentable_type]" value="Goal">
+  <label for="comment">Comment</label>
+  <textarea id="comment" name="comment[body]" rows="1" cols="20"></textarea>
+  <input type="submit" value="Add New Comment">
+</form>
+
 <br>
 <% if current_user.id == @goal.user_id %>
 <form action="<%= goal_url(@goal) %>" method="post">

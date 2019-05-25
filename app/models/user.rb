@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Commentable
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: { message: "can't be blank" }
   validates :session_token, presence: true, uniqueness: true
