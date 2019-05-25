@@ -1,0 +1,11 @@
+<h1>All Goals</h1>
+
+<ul>
+  <% @goals.each do |goal| %>
+    <% if goal.private == false || (goal.private == true && goal.user_id == current_user.id) %>
+      <li><a href="<%= goal_url(goal) %>"><%= goal.content %>, [<%= goal.details.truncate_words(4) %>...]</a></li>
+    <% end %>
+  <% end %>
+</ul>
+<br>
+<a href="<%= new_goal_url %>">Add New Goal</a>

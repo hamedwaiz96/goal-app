@@ -1,0 +1,26 @@
+<%= flash[:errors3] %>
+
+<h1>Edit Goal</h1>
+
+<form action="<%= goal_url %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= auth_token %>
+  <input type="hidden" name="goal[user_id]" value="<%= @goal.user_id %>">
+  <label for="title">Title</label>
+  <input id="title" type="text" name="goal[content]" value="<%= @goal.content %>">
+  <br>
+  <label for="details">Details</label>
+  <textarea id="details" name="goal[details]" rows="1" cols="20"><%= @goal.details %></textarea>
+  <br>
+  <label for="private">Private</label>
+  <input <%= @goal.private == true ? "checked" : "" %> id="private" type="checkbox" name="goal[private]" value="true">
+  <label for="public">Public</label>
+  <input <%= @goal.private == false ? "checked" : "" %> id="public" type="checkbox" name="goal[private]" value="false">
+  <br>
+  <label for="complete">Yes</label>
+  <input <%= @goal.completed == true ? "checked" : "" %> id="complete" type="checkbox" name="goal[completed]" value="true">
+  <label for="uncomplete">No</label>
+  <input <%= @goal.completed == false ? "checked" : "" %> id="uncomplete" type="checkbox" name="goal[completed]" value="false">
+  <br>
+  <input type="submit" value="Edit Goal">
+</form>

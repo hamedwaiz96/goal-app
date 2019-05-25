@@ -1,0 +1,21 @@
+<h1><%= @goal.content %>'s Show Page</h1>
+
+<ul>
+  <li>Details: <%= @goal.details %></li>
+  <li><%= @goal.private == true ? "Private" : "Public" %></li>
+  <li>Completed? <%= @goal.completed == true ? "Yes" : "No" %></li>
+  <li>User: <%= @user.email %></li>
+</ul>
+<br>
+<a href="<%= goals_url %>">Back to Goals</a>
+<br>
+
+<% if current_user.id == @goal.user_id %>
+<form action="<%= goal_url(@goal) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete">
+</form>
+<br>
+<a href="<%= edit_goal_url(@goal) %>">Edit Goal</a>
+<% end %>
