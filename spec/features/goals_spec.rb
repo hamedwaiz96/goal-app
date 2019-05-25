@@ -39,28 +39,28 @@ feature "Editing Goals" do
     click_on "Login"
     click_on "Look at all Public Goals"
     click_on "Add New Goal"
-    fill_in 'Title', :with => 'shet'
-    fill_in 'Details', :with => "I am a shet"
+    fill_in 'Title', :with => 'hello'
+    fill_in 'Details', :with => "I am a person"
     find(:css, "#private[value='true']").set(true)
     find(:css, "#uncomplete[value='false']").set(true)
     click_on "Submit New Goal"
   end
 
   scenario "Have an editing page" do
-    goal = Goal.find_by(:content => 'shet')
-    click_on "Edit"
+    goal = Goal.find_by(:content => 'hello')
+    click_on "Edit Goal"
     expect(page).to have_content("Edit")
   end
 
   scenario "Redirect to show page after editing" do
-    goal = Goal.find_by(:content => 'shet')
-    click_on "Edit"
-    expect(page).to have_content("shet")
+    goal = Goal.find_by(:content => 'hello')
+    click_on "Edit Goal"
+    expect(page).to have_content("I am a person")
     fill_in "Title", :with => "Bouy"
-    fill_in "Details", :with => "Sock on a hair"
+    fill_in "Details", :with => "I like people"
     click_on "Edit Goal"
     expect(page).to have_content("Bouy")
-    expect(page).not_to have_content("shet")
+    expect(page).not_to have_content("hello")
   end
 
 end
@@ -76,17 +76,17 @@ feature "Deleting a Goal" do
     click_on "Login"
     click_on "Look at all Public Goals"
     click_on "Add New Goal"
-    fill_in 'Title', :with => 'shet'
-    fill_in 'Details', :with => "I am a shet"
+    fill_in 'Title', :with => 'hello'
+    fill_in 'Details', :with => "I am a person"
     find(:css, "#private[value='true']").set(true)
     find(:css, "#uncomplete[value='false']").set(true)
     click_on "Submit New Goal"
   end
 
   scenario "Deletes the goal" do
-    goal = Goal.find_by(:content => 'shet')
+    goal = Goal.find_by(:content => 'hello')
     click_on "Delete"
-    expect(page).not_to have_content("shet")
+    expect(page).not_to have_content("hello")
   end
 
 end

@@ -20,7 +20,8 @@
 <form action="<%= goal_comments_url %>" method="post">
   <%= auth_token %>
   <input type="hidden" name="goal_comment[goal_id]" value="<%= @goal.id %>">
-  <textarea name="goal_comment[body]" rows="1" cols="20"></textarea>
+  <label for="comment">Comment</label>
+  <textarea id="comment" name="goal_comment[body]" rows="1" cols="20"></textarea>
   <br>
   <input type="submit" value="Add New Comment">
 </form>
